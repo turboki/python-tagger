@@ -16,6 +16,14 @@ Default: `.`
 
 `python tagger.py --path /Users/me/Documents/text_files`
 
+#### recursive
+
+traverses your directory recursivelly
+
+Default: `false`
+
+`python tagger.py --path /Users/me/Documents/text_files --recursive`
+
 #### csv
 
 Pass in a relative or absolute path where of your source CSV
