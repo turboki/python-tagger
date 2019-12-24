@@ -1,0 +1,3 @@
+NAME,ARGS
+Test1,--path example/files --recursive  --csv example/source.csv --appendType dynamic --appendValue TITLE --dupe --dupeDelimiter ": "
+Test2,--path example/files --recursive  --csv example/source.csv --appendType dynamic --appendValue TITLE --dupe --dupeDelimiter "| "
