@@ -117,3 +117,59 @@ Example:
 ```python
 python batchTagger.py --csv example/batch.csv
 ```
+
+## nefTagger.py
+
+This is a simple utility for adding tags into a nef text file. 
+
+`python nefTagger.py --path example/images --recursive --overwrite --tagBase`
+
+### Parameters
+
+#### path
+
+Pass in a relative or absolute path where your text files are contained. 
+
+Default: `.`
+
+`python nefTagger.py --path example/images`
+
+#### recursive
+
+traverses your directory recursivelly
+
+Default: `false`
+
+`python nefTagger.py --path example/images --recursive `
+
+#### live
+
+By default script prints out all the debug statements without modifying any files. Live flag executes changes.
+
+Default: `false`
+
+`python nefTagger.py --path example/images --recursive --live`
+
+#### tagBase
+
+Flag to switch tagging files in the base directory. By default no files will be changed in the base directory of the path argument.
+
+Default: `false`
+
+`python nefTagger.py --path example/images --recursive --tagBase`
+
+#### overwrite
+
+In an existing `<tag>` is found in the file, the script will skip editing it, unless overwrite is passed in. In this case the tag will be replaced with the directory name. Cannot be used with --merge
+
+Default: `false`
+
+`python nefTagger.py --path example/images --recursive --tagBase --overwrite`
+
+#### merge
+
+In an existing `<tag>` is found in the file, the script will skip editing it, unless merge is passed in. Merge will add the directory name to the exisitng tag. It does not dedupe so you may end up with the same tag repeated.
+
+Default: `false`
+
+`python nefTagger.py --path example/images --recursive --tagBase --merge`
