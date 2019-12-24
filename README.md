@@ -83,7 +83,7 @@ FF00000,xyz
 ```
 
 Function:
-```python
+```
 python tagger.py --appendType dynamic --appendValue TAG --dupe
 ```
 
@@ -97,7 +97,7 @@ abc,123,xyz
 If using dupe mode, the entries will be joined by a delimiter. By default the delimiter is a comma, but you can use the optional flag dupeDelimiter to pass in any delimiter you want:
 
 Function:
-```python
+```
 python tagger.py --appendType dynamic --appendValue TAG --dupe --dupeDelimiter ": "
 ```
 
@@ -114,7 +114,7 @@ To help with multiple executions of the tagger script, we also have the batchTag
 
 Example:
 
-```python
+```
 python batchTagger.py --csv example/batch.csv
 ```
 
