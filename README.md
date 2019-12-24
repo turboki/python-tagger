@@ -107,3 +107,13 @@ abc: 123: xyz
 ```
 
 Default: `,`
+
+## batchTagger.py
+
+To help with multiple executions of the tagger script, we also have the batchTagger.py script. This script relies on a batch.csv file being passed in that has a NAME and ARGS columns. The column names aren't important but the order is. batchTagger.py will exceute each set of arguments in the batch file. 
+
+Example:
+
+```python
+python batchTagger.py --csv example/batch.csv
+```
