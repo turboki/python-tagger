@@ -60,10 +60,50 @@ Default: `FF\d{5} \\FF00000, FF12345...`
 
 #### live
 
-Prints out all the debug statements without modifying any files. Good to check 
+By default script prints out all the debug statements without modifying any files. Live flag executes changes.
 
 Default: `false`
 
-`python tagger.py --appendValue <tagged> --live true`
+`python tagger.py --appendValue <tagged> --live`
 
-`python tagger.py --appendType dynamic --appendValue TITLE`
+`python tagger.py --appendType dynamic --appendValue TITLE --live`
+
+#### dupe
+
+Be default the script will use the first value it finds that matches the key in the source.csv. However if you want to use all values, you can pass in the dupe flag. 
+
+Example:
+
+CSV:
+```CSV
+CODE,TAG
+FF00000,abc
+FF00000,123
+FF00000,xyz
+```
+
+Function:
+```python
+python tagger.py --appendType dynamic --appendValue TAG --dupe
+```
+
+Output:
+```
+abc,123,xyz
+```
+
+#### dupeDelimiter
+
+If using dupe mode, the entries will be joined by a delimiter. By default the delimiter is a comma, but you can use the optional flag dupeDelimiter to pass in any delimiter you want:
+
+Function:
+```python
+python tagger.py --appendType dynamic --appendValue TAG --dupe --dupeDelimiter ": "
+```
+
+Output:
+```
+abc: 123: xyz
+```
+
+Default: `,`

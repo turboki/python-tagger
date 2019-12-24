@@ -7,13 +7,26 @@ parser.add_argument('--appendType', action="store", dest='type', default='')
 parser.add_argument('--appendValue', action="store", dest='value', default='<false>')
 parser.add_argument('--live', action="store_true", dest='live')
 parser.add_argument('--recursive', action="store_true", dest='recursive')
+parser.add_argument('--dupe', action="store_true", dest='dupe')
+parser.add_argument('--dupeDelimiter', action="store", dest='dupeDelimiter', default=',')
 args = parser.parse_args()
 
 with open(args.csv, mode='r') as infile:
     reader = csv.reader(infile)
     headers = next(reader, None)
+   
+    mydict = {}
     if args.type == 'dynamic' and args.value in headers:
-        mydict = {rows[0]:'<' + rows[headers.index(args.value)] + '>' for rows in reader}
+        if args.dupe == True :
+            for rows in reader:
+                k = rows[0]
+                if (k in mydict.keys()):
+                    v = mydict[k] + args.dupeDelimiter + rows[headers.index(args.value)]
+                else: 
+                    v = rows[headers.index(args.value)]
+                mydict[k] = v
+        else: 
+            mydict = {rows[0]:'<' + rows[headers.index(args.value)] + '>' for rows in reader}
     else:
         mydict = {rows[0]:args.value for rows in reader}
 
